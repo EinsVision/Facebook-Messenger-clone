@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(1);
+  const increment = () => setInput(input + 1);
+  const decrement = () => setInput(input - 1);
+  
   return (
     <div className="app">
-      <h1>Facebook Messenger Clone Coding</h1>
+      {/* Review React Hook */}
+      <h1>first variable {input}</h1>
 
       <input />
-      <button>Send Message</button>
+      <button onClick={increment}>increment</button>
+      <button onClick={decrement}>decrement</button>
       {/* input field */}
       {/* button */}
       {/* messeges themselves */}
