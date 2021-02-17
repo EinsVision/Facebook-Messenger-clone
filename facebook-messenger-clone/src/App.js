@@ -3,20 +3,15 @@ import './App.css';
 
 function App() {
   const [input, setInput] = useState(1);
-  const increment = () => setInput(input + 1);
-  const decrement = () => setInput(input - 1);
-
   return (
     <div className="app">
-      {/* Review React Hook */}
-      <h1> useState : {input}</h1>
+      <h1>Facebook messenger clone 🚀✨</h1>
+      <input value={input} onChange={ event => setInput(event.target.value) }/>
+      <button>Send message</button>
 
-      <input />
-      <button onClick={increment}>increment</button>
-      <button onClick={decrement}>decrement</button>
       {/* input field */}
       {/* button */}
-      {/* messeges themselves */}
+      {/* message themselves */}
     </div>
   );
 }
