@@ -8,20 +8,27 @@ function App() {
   console.log(input);
   console.log(messages);
 
+
   const sendMessage = (event) => {
     // all the logic to send a message goes
+    event.preventDefault();
     setMessages([...messages, input]);
     setInput('');
   }
   return (
     <div className="app">
       <h1>Facebook messenger clone 🚀✨</h1>
-      <input value={input} onChange={ event => setInput(event.target.value) }/>
-      <button onClick={sendMessage}>Send message</button>
 
-      {/* input field */}
-      {/* button */}
-      {/* message themselves */}
+      <form>
+        <input value={input} onChange={ event => setInput(event.target.value) }/>
+        <button type='submit' onClick={sendMessage}>Send message</button>
+      </form>
+            
+      {
+        messages.map(message => (
+          <p>{message}</p>
+        ))
+      }
     </div>
   );
 }
