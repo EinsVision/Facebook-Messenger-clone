@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
+import Message from './Message';
 
 function App() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
+  const [username, setUsername] = useState('');
+
+  // useState = variable in REACT
+  // useEffect = run code on a condition in REACT
+  
+  useEffect(() => {
+    // run code here... 
+    // if its blank inside [], this code runs ONCE when the app component loads 
+  }, []);
 
   console.log(input);
   console.log(messages);
@@ -30,7 +40,7 @@ function App() {
             
       {
         messages.map(message => (
-          <p>{message}</p>
+          <Message text={message}/>
         ))
       }
     </div>
