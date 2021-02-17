@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
 import Message from './Message';
+import db from './firebase';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([ 
-    {username:'Boyoung', text: 'Nice to meet you.'}, 
-    {username:'Chagndae', text: 'whats up'} 
-  ]);
+  const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState('');
 
   // useState = variable in REACT
   // useEffect = run code on a condition in REACT
   
+  useEffect(()=> {
+    db.collection('messages').onSnapshot(snapshot => {
+      setMessages(snapshot.docs.map(doc => doc.data()))
+    })
+  }, [] )
+
   useEffect(() => {
     // run code here... 
     // if its blank inside [], this code runs ONCE when the app component loads 
