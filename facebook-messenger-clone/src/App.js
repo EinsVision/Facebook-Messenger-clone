@@ -6,8 +6,8 @@ import Message from './Message';
 function App() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([ 
-    {username:'sonny', text: 'hey guys'}, 
-    {username:'chagndae', text: 'whats up'} 
+    {username:'Boyoung', text: 'Nice to meet you.'}, 
+    {username:'Chagndae', text: 'whats up'} 
   ]);
   const [username, setUsername] = useState('');
 
@@ -44,7 +44,7 @@ function App() {
             
       {
         messages.map(message => (
-          <Message username={message.username} text={message.text}/>
+          <Message username={username} message={message}/>
         ))
       }
     </div>
