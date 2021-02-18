@@ -26,10 +26,6 @@ function App() {
     setUsername(prompt('please enter your name'));
   }, [] );
 
-  // console.log(input);
-  // console.log(messages);
-
-
   const sendMessage = (event) => {
     // all the logic to send a message goes
     event.preventDefault();
@@ -44,9 +40,10 @@ function App() {
   }
   return (
     <div className="App">
+      <img src='https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=399&h=399' alt='' />
       <h1>Facebook messenger clone 🚀✨</h1>
       <h2>Welcome {username}</h2>
-      <form>
+      <form className='app__form'>
         <FormControl>
           <InputLabel>Enter a message...</InputLabel>
           <Input value={input} onChange={ event => setInput(event.target.value) }/>
