@@ -4,6 +4,7 @@ import './App.css';
 import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase';
+import FlipMove from 'react-flip-move';
 
 function App() {
   const [input, setInput] = useState('');
@@ -15,7 +16,7 @@ function App() {
   
   useEffect(()=> {
     db.collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
-      setMessages(snapshot.docs.map(doc => doc.data()))
+      setMessages(snapshot.docs.map( doc => ({ id: doc.id, message: doc.data()}) ))
     })
   }, [] )
 
@@ -42,7 +43,7 @@ function App() {
     setInput('');
   }
   return (
-    <div className="app">
+    <div className="App">
       <h1>Facebook messenger clone 🚀✨</h1>
       <h2>Welcome {username}</h2>
       <form>
@@ -52,12 +53,15 @@ function App() {
           <Button disabled={!input} variant="contained" color='primary' type='submit' onClick={sendMessage}>Send message</Button>
         </FormControl>
       </form>
-            
-      {
-        messages.map(message => (
-          <Message username={username} message={message}/>
-        ))
-      }
+      
+      <FlipMove>
+        {
+          messages.map(({id, message}) => (
+            <Message key={id} username={username} message={message}/>
+          ))
+        }
+      </FlipMove>
+      
     </div>
   );
 }
